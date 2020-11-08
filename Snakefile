@@ -12,9 +12,8 @@ REF = config["REF"]
 PROJECT = config["PROJECT"]
 
 print(SAMPLES)
-
-onsuccess: print("finished successfully")
-onerror: print("finished with errors")
+onsuccess: print("finished successfully") # insert more useful code here, e.g. send email to yourself
+onerror: print("finished with errors") # insert more useful code here, e.g. send email to yourself
 
 rule all:
     input:
@@ -30,6 +29,7 @@ rule align:
         RG = "'@RG\\tID:{sample}\\tSM:{sample}_subset\\tLB:{sample}'",
         REF = REF
     conda: "envs/bwa.yaml"
+    envmodules: "BWA/0.7.17-foss-2018b"
     threads: 1
     shell: "bwa mem -t {threads} -R {params.RG} {params.REF} {input} -o {output}"
 
@@ -37,6 +37,7 @@ rule sort_bams:
     input: rules.align.output
     output: "data/bam/{sample}.bam"
     conda: "envs/samtools.yaml"
+    envmodules: "samtools/1.8-gcc5.4.0"
     threads: 1
     shell: "samtools view -b {input} | samtools sort -o {output} && samtools index {output}"
 
@@ -46,6 +47,7 @@ rule mark_dups:
         bam = "data/dupmarked_bam/{sample}_dupmarked.bam",
         metrics = "data/dupmarked_bam/{sample}_dupmetrics.txt"
     conda: "envs/gatk.yaml"
+    envmodules: "GATK/4.1.7.0-GCCcore-8.3.0-Java-11"
     threads: 1
     shell: "gatk MarkDuplicates -I {input} -O {output.bam} -M {output.metrics}"
 
@@ -53,6 +55,7 @@ rule plot_dupmetrics:
     input: expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES)
     output: "data/plots/dups.pdf"
     conda: "envs/r.yaml"
+    envmodules: "R/default"
     script: "scripts/plot.R"
 
 
@@ -62,5 +65,6 @@ rule merge_bams:
     output: "data/merged_bam/merged_bam.bam"
     params: " -I ".join(expand("data/bam/{sample}.bam", sample = SAMPLES))
     conda: "envs/gatk.yaml"
+    envmodules: "GATK/4.1.7.0-GCCcore-8.3.0-Java-11"
     threads: 1
     shell: "gatk MergeSamFiles -I {params} -O {output}"

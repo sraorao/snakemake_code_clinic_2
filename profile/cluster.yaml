@@ -1,0 +1,18 @@
+__resources__:
+  hostname: "*"
+#  gpu: 
+#    - "gpu"
+#    - "nvidia_gpu"
+
+__default__:
+  join: yes
+  output: cluster_logs/
+  name: "default_job"
+  queue: "short.qc"
+  project: "project.prjc"
+  cwd: ""
+  # hostname: "compe*" # uncomment if using conda envs
+  # export_env: "" # commented out on 5 Nov 2020 - RAO
+  pe: "shmem 1" 
+
+

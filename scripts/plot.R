@@ -1,5 +1,5 @@
-# Title     : TODO
-# Objective : TODO
+# Title     : Plot Dupmetrics
+# Objective : Script to collate duplication data from GATK MarkDuplicates and plot
 # Created by: srao
 # Created on: 07/11/2020
 

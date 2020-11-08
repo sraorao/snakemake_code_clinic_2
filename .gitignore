@@ -1,3 +1,7 @@
 .snakemake
 .idea
+data/bam
+data/sam
+data/dupmarked_bam
+data/plots
 
