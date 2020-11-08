@@ -1,0 +1,3 @@
+REF: "/media/srao/hdd1_p2/gatk_resource_bundle/hg38/Homo_sapiens_assembly38.fasta"
+PROJECT: "PRJNA526724"
+SAMPLES: ['A', 'B', 'C', 'D']
