@@ -30,6 +30,6 @@ $ snakemake -j 4 --use-conda --dry-run
 ## Run on the BMRC cluster
 When running on the BMRC cluster, remember to set `--max-status-checks-per-second` to `0.01` as noted [in the Snakemake section here](https://www.medsci.ox.ac.uk/divisional-services/support-services-1/bmrc/scientific-software-directory/#s). 
 ```
-$ snakemake -j 4 --use-envmodules --max-status-checks-per-second 0.01 --profile profile/
+$ snakemake -j 4 --use-envmodules --max-status-checks-per-second 0.01 --profile profile/ --dry-run
 ```
 Note that here, `4` is the number of jobs submitted at a time. The number of threads (slots) allocated to each job is determined by `profile/cluster.yaml`.
