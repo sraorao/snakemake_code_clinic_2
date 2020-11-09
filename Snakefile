@@ -59,12 +59,3 @@ rule plot_dupmetrics:
     script: "scripts/plot.R"
 
 
-# ----------------------------------------------------------------------------------------------------------------------
-rule merge_bams:
-    input: expand("data/bam/{sample}.bam", sample = SAMPLES)
-    output: "data/merged_bam/merged_bam.bam"
-    params: " -I ".join(expand("data/bam/{sample}.bam", sample = SAMPLES))
-    conda: "envs/gatk.yaml"
-    envmodules: "GATK/4.1.7.0-GCCcore-8.3.0-Java-11"
-    threads: 1
-    shell: "gatk MergeSamFiles -I {params} -O {output}"

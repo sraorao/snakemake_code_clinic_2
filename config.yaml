@@ -1,3 +1,4 @@
 REF: "/media/srao/hdd1_p2/gatk_resource_bundle/hg38/Homo_sapiens_assembly38.fasta" # your reference bwa index
+# REF: "/well/htseq/Genomes/BWA-0.7/hs37d5" # reference fasta available on Rescomp
 PROJECT: "PRJNA526724"
 SAMPLES: ['A', 'B', 'C', 'D']
