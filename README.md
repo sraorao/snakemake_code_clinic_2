@@ -10,7 +10,7 @@ The original fastq files used here are from the European Nucleotide Archive Proj
 
 ## Cluster profile
 The profile code was originally written by [drjbarker](https://github.com/drjbarker/snakemake-gridengine), and I made 
-the following modifications to it:
+the following modifications ([diffs](https://github.com/sraorao/snakemake-gridengine/commit/dadfcdff353d79a0ae897268e43096b8d8ccaadf)) to it:
 
 - Logger warning turned off when the `sge-status` script can not find the job, because in my experience, this seems to 
 be because `qacct` has not updated yet
@@ -20,6 +20,8 @@ Importantly, `export-env` (`-V`) has been disabled as per
 In addition, I have added a hostname option in `cluster.yaml` to specify node names.
 - `sge-jobscript.sh` has been edited so that the Anaconda module can be loaded when Snakemake is using conda 
 environments. This may conflict with any other environment modules loaded in individual rules.
+
+This modified profile is included in this repo, but also available as [a fork of the original](https://github.com/sraorao/snakemake-gridengine).
 
 ## Conda vs. environments 
 Conda is preferred to make a workflow more reproducible. However, on the BMRC cluster, due to a mixture of nodes with 
