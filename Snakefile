@@ -20,7 +20,8 @@ rule all:
         # merged_bam = "data/merged_bam/merged_bam.bam",
         dupmarked_bam = expand("data/dupmarked_bam/{sample}_dupmarked.bam", sample = SAMPLES),
         metrics = expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES),
-        plot = "data/plots/dups.pdf"
+        plot = "data/plots/dups.pdf",
+        python_plot = "data/plots/dups_python.pdf"
 
 rule align:
     input: "data/fastq/{sample}.fastq.gz"
@@ -58,4 +59,9 @@ rule plot_dupmetrics:
     envmodules: "R/default"
     script: "scripts/plot.R"
 
-
+rule plot_dupmetrics_python:
+    input: expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES)
+    output: "data/plots/dups_python.pdf"
+    conda: "envs/python.yaml"
+    envmodules: "Anaconda3/2020.07"
+    script: "scripts/plot.py"

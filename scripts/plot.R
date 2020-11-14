@@ -4,10 +4,16 @@
 # Created on: 07/11/2020
 
 # 'snakemake' object contains 'input', 'output', 'params', 'config'
+print("----------------------------Slots in the snakemake S4 object----------------------------")
+slotNames(snakemake)
+print("--------------------------Structure of the snakemake S4 object--------------------------")
+str(snakemake)
+print("----------------------------------------------------------------------------------------")
+
 metrics_files = snakemake@input # a list of 4 filenames
 plot_pdf = snakemake@output[[1]] # extract output filename from a list of 1
 
-print(metrics_files)
+# print(metrics_files)
 
 # read all the dupmetrics files and concatenate them
 dups = lapply(metrics_files, read.table, header = TRUE, fill = TRUE)
