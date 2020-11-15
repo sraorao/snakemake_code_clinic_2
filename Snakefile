@@ -50,7 +50,7 @@ rule mark_dups:
     conda: "envs/gatk.yaml"
     envmodules: "GATK/4.1.7.0-GCCcore-8.3.0-Java-11"
     threads: 1
-    shell: "gatk MarkDuplicates -I {input} -O {output.bam} -M {output.metrics}"
+    shell: "which gatk && gatk MarkDuplicates -I {input} -O {output.bam} -M {output.metrics}"
 
 rule plot_dupmetrics:
     input: expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES)
