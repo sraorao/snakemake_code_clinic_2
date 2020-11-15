@@ -18,8 +18,8 @@ onerror: print("finished with errors") # insert more useful code here, e.g. send
 rule all:
     input:
         # merged_bam = "data/merged_bam/merged_bam.bam",
-        dupmarked_bam = expand("data/dupmarked_bam/{sample}_dupmarked.bam", sample = SAMPLES),
-        metrics = expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES),
+        # dupmarked_bam = expand("data/dupmarked_bam/{sample}_dupmarked.bam", sample = SAMPLES),
+        # metrics = expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES),
         plot = "data/plots/dups.pdf",
         python_plot = "data/plots/dups_python.pdf"
 
