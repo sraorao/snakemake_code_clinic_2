@@ -32,7 +32,7 @@ rule align:
     conda: "envs/bwa.yaml"
     envmodules: "BWA/0.7.17-foss-2018b"
     threads: 1
-    shell: "bwa mem -t {threads} -R {params.RG} {params.REF} {input} -o {output}"
+    shell: "which bwa && bwa mem -t {threads} -R {params.RG} {params.REF} {input} -o {output}"
 
 rule sort_bams:
     input: rules.align.output
@@ -40,7 +40,7 @@ rule sort_bams:
     conda: "envs/samtools.yaml"
     envmodules: "samtools/1.8-gcc5.4.0"
     threads: 1
-    shell: "samtools view -b {input} | samtools sort -o {output} && samtools index {output}"
+    shell: "which samtools && samtools view -b {input} | samtools sort -o {output} && samtools index {output}"
 
 rule mark_dups:
     input: rules.sort_bams.output
