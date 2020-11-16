@@ -1,5 +1,5 @@
 __resources__:
-#  hostname: "*"
+  hostname: "*"
 #  gpu: 
 #    - "gpu"
 #    - "nvidia_gpu"
