@@ -63,5 +63,5 @@ rule plot_dupmetrics_python:
     input: expand("data/dupmarked_bam/{sample}_dupmetrics.txt", sample = SAMPLES)
     output: "data/plots/dups_python.pdf"
     conda: "envs/python.yaml"
-    envmodules: "Anaconda3/2020.07"
+    envmodules: "Anaconda3/2020.02"
     script: "scripts/plot.py"
