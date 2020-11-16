@@ -3,6 +3,6 @@
 
 # exit on first error
 set -o errexit
-module load Anaconda3/2020.02
+module load Anaconda3/2020.07
 
 {exec_job}
