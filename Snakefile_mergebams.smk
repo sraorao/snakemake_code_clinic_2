@@ -4,6 +4,8 @@ inputs: 4 bam files from folder /data/bam/
 outputs: 1 merged bam file in folder /data/merged_bam/
 """
 configfile: "config.yaml"
+from snakemake.utils import min_version
+min_version("5.26")
 
 SAMPLES = config["SAMPLES"]
 

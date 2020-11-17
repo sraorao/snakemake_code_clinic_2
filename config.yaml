@@ -1,4 +1,8 @@
-REF: "/media/srao/hdd1_p2/gatk_resource_bundle/hg38/Homo_sapiens_assembly38.fasta" # your reference bwa index
-# REF: "/well/htseq/Genomes/BWA-0.7/hs37d5" # reference fasta available on Rescomp
+REF38: "/media/srao/hdd1_p2/gatk_resource_bundle/hg38/Homo_sapiens_assembly38.fasta" # your reference bwa index
+REF37: "/media/srao/hdd1_p2/other_resources/hg37d5/hs37d5.fasta" # your reference bwa index
+# REF37: "/well/htseq/Genomes/BWA-0.7/hs37d5" # reference fasta available on Rescomp
+# REF38:
 PROJECT: "PRJNA526724"
 SAMPLES: ['A', 'B', 'C', 'D']
+REF_VERSION: 37 # value can be 37, or 38
+

@@ -11,7 +11,7 @@ from snakemake.utils import min_version
 min_version("5.26")
 
 SAMPLES = config["SAMPLES"]
-REF = config["REF37"]
+
 PROJECT = config["PROJECT"]
 
 print(SAMPLES)
@@ -26,10 +26,25 @@ rule all:
         plot = "data/plots/dups.pdf",
         python_plot = "data/plots/dups_python.pdf"
 
+#-----------------------------------------------------------------------------------------------------------------------
+def get_ref(wildcards):
+    """
+    Return the correct genome file based on REF_VERSION value set in config.yaml
+    :param wildcards:
+    :return:
+    """
+    if config["REF_VERSION"] == 37:
+        return [config["REF37"]]
+    elif config["REF_VERSION"] == 38:
+        return [config["REF38"]]
+    else:
+        print("incorrect value for reference!")
+#-----------------------------------------------------------------------------------------------------------------------
+
 rule align:
     input:
         fastq = "data/fastq/{sample}.fastq.gz",
-        ref = REF
+        ref = get_ref
     output: temp("data/sam/{sample}.sam") # sam files will be deleted after workflow finishes
     params:
         RG = "'@RG\\tID:{sample}\\tSM:{sample}_subset\\tLB:{sample}'"
