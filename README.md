@@ -81,6 +81,12 @@ Using BMRC environment modules
 ```
 $ snakemake --snakefile Snakefile -j 4 --max-status-checks-per-second 0.01 --profile profile/ --use-envmodules --dry-run
 ```
+Using both conda and BMRC environment modules
+```
+$ snakemake --snakefile Snakefile -j 4 --max-status-checks-per-second 0.01 --profile profile/ --use-conda --use-envmodules --dry-run
+```
+Conda will be used only for rules that don't define envmodules.
+
 ## `Snakefile_mergebams.smk`
 This workflow illustrates how to construct a parameter sequence using python code. In this example, we need to generate 
 a command for `gatk MergeSamFiles` which takes multiple bam files as input and outputs a single merged bam file. 
@@ -89,5 +95,11 @@ whereas we want the input parameters to be parsed to `-I A.bam -I B.bam -I C.bam
 using the `join()` function in python.
 
 ```
-$ snakemake --snakefile Snakefile_mergebams.smk -j 1 --max-status-checks-per-second 0.01 --profile profile/ --dry-run
+$ snakemake --snakefile Snakefile_mergebams.smk -j 1 --max-status-checks-per-second 0.01 --profile profile/ --use-conda --dry-run
+```
+
+## `snakefile_inputfunc.smk'`
+Input functions can be used in place of filenames and returns a list or a dict. 
+```
+$ snakemake --snakefile Snakefile_mergebams.smk -j 1 --max-status-checks-per-second 0.01 --profile profile/ --use-conda --dry-run
 ```

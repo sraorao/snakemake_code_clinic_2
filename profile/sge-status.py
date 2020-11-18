@@ -63,7 +63,6 @@ for i in range(STATUS_ATTEMPTS):
                 break
             else:
                 # qacct can be quite slow to update on large servers
-                time.sleep(5)
+                time.sleep(20) # edited by RAO
         pass
-    time.sleep(100)  # edited by RAO
 print(job_status)

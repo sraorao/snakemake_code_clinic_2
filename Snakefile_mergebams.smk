@@ -13,7 +13,6 @@ print(SAMPLES)
 onsuccess: print("finished successfully") # insert more useful code here, e.g. send email to yourself
 onerror: print("finished with errors") # insert more useful code here, e.g. send email to yourself
 
-
 rule merge_bams:
     input: expand("data/bam/{sample}.bam", sample = SAMPLES)
     output: "data/merged_bam/merged_bam.bam"
