@@ -98,7 +98,7 @@ using the `join()` function in python.
 $ snakemake --snakefile Snakefile_mergebams.smk -j 1 --max-status-checks-per-second 0.01 --profile profile/ --use-conda --dry-run
 ```
 
-## `snakefile_inputfunc.smk`
+## `Snakefile_inputfunc.smk`
 Input functions can be used in place of filenames and returns a list or a dict. 
 ```
 $ snakemake --snakefile Snakefile_mergebams.smk -j 1 --max-status-checks-per-second 0.01 --profile profile/ --use-conda --dry-run
